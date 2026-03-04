@@ -1,45 +1,46 @@
 .app {
-  max-width: 1080px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 2rem 1rem 3rem;
+  padding: 2.2rem 1rem 3rem;
 }
 
 .header h1 {
   margin: 0;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  letter-spacing: 0.04em;
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  letter-spacing: 0.05em;
+  color: #2f4159;
 }
 
 .header p {
-  margin-top: 0.6rem;
-  color: #6d5b3f;
+  margin-top: 0.5rem;
+  color: #4b607f;
 }
 
 .toolbar {
   display: grid;
   grid-template-columns: 1.3fr 0.7fr;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 1.1rem;
+  margin-top: 1.35rem;
 }
 
 .new-note,
 .side-panel,
-.note-card,
 .empty {
-  border-radius: 16px;
-  background: rgba(255, 253, 247, 0.85);
-  border: 1px solid #ecdcb5;
-  box-shadow: 0 10px 30px rgba(108, 84, 25, 0.12);
+  border-radius: 18px;
+  background: rgba(246, 250, 255, 0.75);
+  border: 1px solid rgba(166, 187, 217, 0.45);
+  box-shadow: 0 16px 35px rgba(47, 83, 127, 0.12);
+  backdrop-filter: blur(10px);
 }
 
 .new-note {
-  padding: 1rem;
+  padding: 1.05rem;
   display: grid;
-  gap: 0.7rem;
+  gap: 0.75rem;
 }
 
 .side-panel {
-  padding: 1rem;
+  padding: 1.05rem;
   height: fit-content;
 }
 
@@ -49,13 +50,24 @@
 .edit-area input,
 .edit-area textarea {
   width: 100%;
-  border: 1px solid #e1d1aa;
-  border-radius: 10px;
+  border: 1px solid #b8cbe4;
+  border-radius: 12px;
   padding: 0.65rem 0.75rem;
-  background: #fffdfa;
+  background: rgba(255, 255, 255, 0.92);
   font-size: 0.96rem;
-  color: #3f331d;
+  color: #24354f;
   box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search:focus,
+.new-note input:focus,
+.new-note textarea:focus,
+.edit-area input:focus,
+.edit-area textarea:focus {
+  outline: none;
+  border-color: #6e93c6;
+  box-shadow: 0 0 0 3px rgba(136, 170, 217, 0.2);
 }
 
 .new-note textarea,
@@ -66,10 +78,10 @@
 
 button {
   border: 0;
-  border-radius: 10px;
+  border-radius: 11px;
   padding: 0.55rem 0.9rem;
-  background: linear-gradient(120deg, #ffd57e, #ffb74d);
-  color: #4f3900;
+  background: linear-gradient(120deg, #8ab4f8, #6b8ecc);
+  color: #10213b;
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -77,23 +89,23 @@ button {
 
 button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(162, 113, 16, 0.25);
+  box-shadow: 0 8px 18px rgba(57, 103, 168, 0.32);
 }
 
 button.ghost {
-  background: #f9f0d8;
+  background: rgba(227, 236, 250, 0.9);
 }
 
 button.danger {
-  background: #ffe5dc;
-  color: #8f2e16;
+  background: #ffdfe2;
+  color: #8a2f3b;
 }
 
 .stats {
   margin-top: 0.9rem;
   display: flex;
   gap: 0.8rem;
-  color: #675435;
+  color: #3d5475;
   font-weight: 600;
 }
 
@@ -105,44 +117,96 @@ button.danger {
 }
 
 .note-card {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid rgba(97, 112, 130, 0.25);
   padding: 0.95rem;
   display: grid;
   gap: 0.7rem;
+  transform-origin: top center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: reveal 240ms ease;
+  box-shadow: 0 10px 20px rgba(38, 53, 74, 0.12);
+}
+
+.note-card::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 52px;
+  height: 20px;
+  border-radius: 4px;
+  transform: translateX(-50%) rotate(-1deg);
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(173, 182, 199, 0.45);
+  box-shadow: 0 2px 6px rgba(50, 70, 100, 0.12);
+}
+
+.note-card:nth-child(4n + 1) {
+  background: #fff5c6;
+  transform: rotate(-1.6deg);
+}
+
+.note-card:nth-child(4n + 2) {
+  background: #dff7de;
+  transform: rotate(0.8deg);
+}
+
+.note-card:nth-child(4n + 3) {
+  background: #ffe3d3;
+  transform: rotate(-0.5deg);
+}
+
+.note-card:nth-child(4n) {
+  background: #dff1ff;
+  transform: rotate(1.3deg);
 }
 
 .note-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(108, 84, 25, 0.2);
+  transform: rotate(0deg) translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 28px rgba(33, 54, 85, 0.22);
+  z-index: 2;
 }
 
 .note-card.pinned {
-  border-color: #ffb347;
-  background: linear-gradient(160deg, #fffbe9, #fff4d8);
+  border-color: #f08d61;
+  background: #ffd9bc;
+}
+
+.note-card.pinned::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff6d5a;
+  box-shadow: 0 0 0 3px rgba(255, 109, 90, 0.18);
 }
 
 .note-card h3 {
   margin: 0;
   font-size: 1.08rem;
-  color: #3e2f16;
+  color: #20334f;
 }
 
 .content {
   margin: 0;
-  color: #514022;
+  color: #344865;
   white-space: pre-wrap;
   word-break: break-word;
   min-height: 70px;
 }
 
 .muted {
-  color: #8a7b60;
+  color: #587198;
 }
 
 .time {
   margin: 0;
-  color: #8a7b60;
+  color: #576f95;
   font-size: 0.82rem;
 }
 
@@ -154,19 +218,19 @@ button.danger {
 
 .empty {
   grid-column: 1 / -1;
-  padding: 2rem 1rem;
+  padding: 2.1rem 1rem;
   text-align: center;
-  color: #6f5b34;
+  color: #385078;
 }
 
 @keyframes reveal {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(8px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
