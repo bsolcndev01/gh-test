@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  min-width: 300px;
+  min-height: 100vh;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background:
+    radial-gradient(circle at top right, #ffefc8 0%, transparent 40%),
+    radial-gradient(circle at bottom left, #ffe0c8 0%, transparent 32%),
+    #fff9ec;
+  color: #33260e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
