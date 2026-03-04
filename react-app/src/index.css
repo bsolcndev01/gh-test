@@ -6,11 +6,20 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background:
-    radial-gradient(circle at top right, #ffefc8 0%, transparent 40%),
-    radial-gradient(circle at bottom left, #ffe0c8 0%, transparent 32%),
-    #fff9ec;
-  color: #33260e;
+  background-color: #e9f1fb;
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.8), transparent 30%),
+    radial-gradient(circle at 86% 84%, rgba(170, 206, 243, 0.45), transparent 26%),
+    linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(160deg, #e8f0fb 0%, #c7dbf5 46%, #d9f0ff 100%);
+  background-size:
+    auto,
+    auto,
+    28px 28px,
+    28px 28px,
+    auto;
+  color: #26384f;
 }
 
 * {
